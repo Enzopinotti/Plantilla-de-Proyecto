@@ -6,6 +6,10 @@ on:
       - feat/modern-node-service-starter
     paths:
       - package.json
+      - src/**
+      - test/**
+      - eslint.config.js
+      - tsconfig*.json
       - .github/workflows/lockfile-bootstrap.yml
 
 permissions:

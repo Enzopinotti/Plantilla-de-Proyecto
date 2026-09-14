@@ -1,4 +1,4 @@
-import Fastify, { type FastifyInstance } from 'fastify';
+import Fastify, { type FastifyError, type FastifyInstance } from 'fastify';
 
 import { loadConfig, type AppConfig } from './config.js';
 
@@ -24,7 +24,7 @@ export function buildApp(config: AppConfig = loadConfig()): FastifyInstance {
     });
   });
 
-  app.setErrorHandler(async (error, request, reply) => {
+  app.setErrorHandler(async (error: FastifyError, request, reply) => {
     const requestedStatus = error.statusCode;
     const statusCode =
       typeof requestedStatus === 'number' && requestedStatus >= 400 && requestedStatus < 600

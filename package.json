@@ -1,52 +1,44 @@
 {
-  "name": "backend-pinottiv2",
+  "name": "node-service-starter",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "Minimal production-minded Node.js + TypeScript HTTP service starter.",
+  "private": false,
   "type": "module",
   "engines": {
-    "node": ">=14.17.6"
+    "node": ">=22"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/app.js --mode development"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src test --max-warnings=0",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"eslint.config.js\" \"tsconfig*.json\" \"package.json\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" \"eslint.config.js\" \"tsconfig*.json\" \"package.json\"",
+    "test": "vitest run",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.0.3",
-    "standard": "^17.1.0"
-  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "fastify",
+    "api",
+    "starter"
+  ],
+  "author": "Enzo Pinotti",
+  "license": "MIT",
   "dependencies": {
-    "@faker-js/faker": "^8.4.0",
-    "bcrypt": "^5.1.1",
-    "commander": "^11.1.0",
-    "connect-mongo": "^5.1.0",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "express-compression": "^1.0.2",
-    "express-handlebars": "^7.1.2",
-    "express-session": "^1.17.3",
-    "jsonwebtoken": "^9.0.2",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.4",
-    "mongodb": "^6.3.0",
-    "mongoose": "^8.0.1",
-    "mongoose-paginate-v2": "^1.7.4",
-    "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.8",
-    "passport": "^0.7.0",
-    "passport-github2": "^0.1.12",
-    "passport-jwt": "^4.0.1",
-    "passport-local": "^1.0.0",
-    "puppeteer": "^21.7.0",
-    "socket.io": "^4.7.2",
-    "sweetalert2": "^11.6.13",
-    "uuid": "^9.0.1",
-    "winston": "^3.11.0"
+    "fastify": "^5.0.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.0.0"
   }
 }

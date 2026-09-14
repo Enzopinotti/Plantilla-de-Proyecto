@@ -1,21 +1,21 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from "vitest";
 
-import { loadConfig } from '../src/config.js';
+import { loadConfig } from "../src/config.js";
 
-describe('loadConfig', () => {
-  it('provides safe local defaults', () => {
+describe("loadConfig", () => {
+  it("provides safe local defaults", () => {
     const config = loadConfig({});
 
     expect(config).toEqual({
-      NODE_ENV: 'development',
-      HOST: '0.0.0.0',
+      NODE_ENV: "development",
+      HOST: "0.0.0.0",
       PORT: 3000,
-      LOG_LEVEL: 'info',
+      LOG_LEVEL: "info",
     });
   });
 
-  it('coerces a valid port and rejects an invalid one', () => {
-    expect(loadConfig({ PORT: '4100' }).PORT).toBe(4100);
-    expect(() => loadConfig({ PORT: '70000' })).toThrow();
+  it("coerces a valid port and rejects an invalid one", () => {
+    expect(loadConfig({ PORT: "4100" }).PORT).toBe(4100);
+    expect(() => loadConfig({ PORT: "70000" })).toThrow();
   });
 });
